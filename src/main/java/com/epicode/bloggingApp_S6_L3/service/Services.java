@@ -1,7 +1,10 @@
 package com.epicode.bloggingApp_S6_L3.service;
 
+import com.epicode.bloggingApp_S6_L3.DTO.AutoreDTO;
 import com.epicode.bloggingApp_S6_L3.DTO.BlogPostDTO;
+import com.epicode.bloggingApp_S6_L3.mapper.AutoreMapperDTO;
 import com.epicode.bloggingApp_S6_L3.mapper.BlogPostMapperDTO;
+import com.epicode.bloggingApp_S6_L3.model.Autore;
 import com.epicode.bloggingApp_S6_L3.model.BlogPost;
 import com.epicode.bloggingApp_S6_L3.repository.AutoreRepository;
 import com.epicode.bloggingApp_S6_L3.repository.BlogPostRepository;
@@ -20,11 +23,16 @@ public class Services {
     BlogPostRepository blogPostRepository;
     @Autowired
     BlogPostMapperDTO blogPostMapperDTO;
+    @Autowired
+    AutoreMapperDTO autoreMapperDTO;
+
+
 
 
     public Page<BlogPostDTO> getAllBlog(Pageable pageable){
         return blogPostRepository.findAll(pageable).map(BlogPostMapperDTO ::toDTO);
     }
+
 
     public BlogPostDTO createBlogPost(BlogPostDTO blogPostDto){
      BlogPost bg = blogPostMapperDTO.toEntity(blogPostDto);
@@ -32,7 +40,11 @@ public class Services {
      return blogPostDto;
     }
 
-
+    public AutoreDTO createAutore(AutoreDTO autoreDTO){
+        Autore autore = autoreMapperDTO.toEntity(autoreDTO);
+        autoreRepository.save(autore);
+        return autoreDTO;
+    }
 
 
 }
