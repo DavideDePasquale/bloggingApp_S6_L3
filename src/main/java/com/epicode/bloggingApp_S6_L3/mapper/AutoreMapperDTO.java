@@ -15,6 +15,7 @@ public class AutoreMapperDTO {
         autoreDto.setCognome(autoreDto.getCognome());
         autoreDto.setEmail(autore.getEmail());
         autoreDto.setDataDiNascita(autore.getDataDiNascita());
+        autoreDto.setAvatar(autore.getAvatar());
         return autoreDto;
     }
     public static Autore toEntity(AutoreDTO autoreDto){
@@ -23,6 +24,7 @@ public class AutoreMapperDTO {
         autore.setCognome(autoreDto.getCognome());
         autore.setEmail(autoreDto.getEmail());
         autore.setDataDiNascita(autoreDto.getDataDiNascita());
+        autore.setAvatar(autoreDto.getAvatar());
         return autore;
     }
 
